@@ -11,7 +11,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+# Update CORS configuration to allow requests from frontend
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 
 # Configure OpenAI with your API key from environment
 openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -23,6 +24,12 @@ if not openai.api_key:
 # Store conversation history and user preferences
 conversations = {}
 user_preferences = {}
+
+# Import OpenAI error classes for proper exception handling
+try:
+    from openai import AuthenticationError, RateLimitError, APIError
+except ImportError:
+    AuthenticationError = RateLimitError = APIError = Exception
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -96,7 +103,7 @@ def chat():
             )
             
             ai_response = response.choices[0].message.content
-        
+
         print(f"OpenAI response: {ai_response}")  # Debug logging
         
         # Add AI response to history
@@ -115,24 +122,27 @@ def chat():
             "timestamp": bot_message["timestamp"]
         })
         
-    except openai.error.AuthenticationError as e:
+    except AuthenticationError as e:
         print(f"OpenAI Authentication Error: {str(e)}")
         return jsonify({
             "error": "Invalid OpenAI API key. Please check your configuration.",
+            "details": str(e),
             "status": "error"
         }), 500
         
-    except openai.error.RateLimitError as e:
+    except RateLimitError as e:
         print(f"OpenAI Rate Limit Error: {str(e)}")
         return jsonify({
             "error": "Rate limit exceeded. Please try again in a moment.",
+            "details": str(e),
             "status": "error"
         }), 500
         
-    except openai.error.APIError as e:
+    except APIError as e:
         print(f"OpenAI API Error: {str(e)}")
         return jsonify({
             "error": "OpenAI service is temporarily unavailable. Please try again.",
+            "details": str(e),
             "status": "error"
         }), 500
         
