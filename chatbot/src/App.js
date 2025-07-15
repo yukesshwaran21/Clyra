@@ -171,6 +171,24 @@ export default function ChatBot() {
     }
   }
 
+  const toggleSettings = () => {
+    setShowSettings(!showSettings)
+  }
+
+  // Add click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showSettings && !event.target.closest(".settings-panel") && !event.target.closest(".settings-btn")) {
+        setShowSettings(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [showSettings])
+
   return (
     <div className={`chat-app ${darkMode ? "dark-mode" : ""} font-${fontSize}`}>
       {/* Header */}
@@ -198,7 +216,7 @@ export default function ChatBot() {
           <button className="action-btn" onClick={clearChat} title="Clear Chat">
             🗑️
           </button>
-          <button className="action-btn" onClick={() => setShowSettings(!showSettings)} title="Settings">
+          <button className="action-btn settings-btn" onClick={toggleSettings} title="Settings">
             ⚙️
           </button>
         </div>
@@ -208,20 +226,39 @@ export default function ChatBot() {
       {showSettings && (
         <div className="settings-panel">
           <div className="settings-content">
-            <h3>Settings</h3>
+            <div className="settings-header">
+              <h3>Settings</h3>
+              <button className="close-settings" onClick={() => setShowSettings(false)}>
+                ×
+              </button>
+            </div>
+
             <div className="setting-item">
-              <label>
-                <input type="checkbox" checked={darkMode} onChange={(e) => setDarkMode(e.target.checked)} />
+              <label className="setting-label">
+                <input
+                  type="checkbox"
+                  checked={darkMode}
+                  onChange={(e) => setDarkMode(e.target.checked)}
+                  className="setting-checkbox"
+                />
+                <span className="checkmark"></span>
                 Dark Mode
               </label>
             </div>
+
             <div className="setting-item">
-              <label>Font Size:</label>
-              <select value={fontSize} onChange={(e) => setFontSize(e.target.value)}>
+              <label className="setting-label">Font Size:</label>
+              <select value={fontSize} onChange={(e) => setFontSize(e.target.value)} className="setting-select">
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
               </select>
+            </div>
+
+            <div className="setting-item">
+              <button className="clear-settings-btn" onClick={clearChat}>
+                Clear All Messages
+              </button>
             </div>
           </div>
         </div>
