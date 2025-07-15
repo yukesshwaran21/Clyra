@@ -41,15 +41,45 @@
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
 }
 
-/* Font Size Classes */
+/* Enhanced Font Size Classes */
 .font-small {
   font-size: 14px;
 }
+
+.font-small .message-text {
+  font-size: 13px;
+}
+
+.font-small .message-input {
+  font-size: 14px;
+}
+
 .font-medium {
   font-size: 16px;
 }
+
+.font-medium .message-text {
+  font-size: 15px;
+}
+
+.font-medium .message-input {
+  font-size: 16px;
+}
+
 .font-large {
   font-size: 18px;
+}
+
+.font-large .message-text {
+  font-size: 17px;
+}
+
+.font-large .message-input {
+  font-size: 18px;
+}
+
+.font-large .header-info h1 {
+  font-size: 1.375rem;
 }
 
 /* Reset and Base Styles */
@@ -84,7 +114,6 @@ body {
   padding: 1rem 1.5rem;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 10;
@@ -196,7 +225,7 @@ body {
   transform: translateY(0);
 }
 
-/* Settings Panel */
+/* Settings Panel - Enhanced */
 .settings-panel {
   position: absolute;
   top: 100%;
@@ -204,58 +233,177 @@ body {
   background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   z-index: 20;
-  min-width: 200px;
+  min-width: 280px;
   animation: slideDown 0.2s ease-out;
+  overflow: hidden;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .settings-content {
-  padding: 1rem;
+  padding: 0;
 }
 
-.settings-content h3 {
-  margin-bottom: 1rem;
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.settings-header h3 {
+  margin: 0;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
+.close-settings {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-settings:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
 .setting-item {
-  margin-bottom: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.setting-item label {
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
   cursor: pointer;
+  font-weight: 500;
+  flex: 1;
 }
 
-.setting-item select {
-  padding: 0.25rem 0.5rem;
+/* Custom Checkbox */
+.setting-checkbox {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--background);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.setting-checkbox:checked + .checkmark {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.setting-checkbox:checked + .checkmark:after {
+  display: block;
+}
+
+.setting-select {
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--background);
   color: var(--text-primary);
   font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.setting-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+.clear-settings-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.clear-settings-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.clear-settings-btn:active {
+  transform: translateY(0);
+}
+
+/* Settings button highlight when active */
+.settings-btn.active {
+  background: var(--primary-color);
+  color: white;
 }
 
 /* Modal Styles */
@@ -661,7 +809,7 @@ body {
   }
 }
 
-/* Responsive Design */
+/* Responsive Settings Panel */
 @media (max-width: 768px) {
   .chat-header {
     padding: 1rem;
@@ -693,6 +841,12 @@ body {
     margin: 1rem;
     padding: 1.5rem;
   }
+
+  .settings-panel {
+    right: 1rem;
+    left: 1rem;
+    min-width: auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -712,6 +866,19 @@ body {
 
   .input-container {
     gap: 0.75rem;
+  }
+
+  .settings-panel {
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .setting-item {
+    padding: 0.75rem 1rem;
+  }
+
+  .settings-header {
+    padding: 0.75rem 1rem;
   }
 }
 
