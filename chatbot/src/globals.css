@@ -84,6 +84,7 @@ body {
   padding: 1rem 1.5rem;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 10;
