@@ -1,67 +1,97 @@
-# Green Themed AI Chatbot
+# Professional AI Chatbot
 
-A beautiful chatbot application with a green theme, smooth animations, and AI-powered responses.
+A modern, professional AI chatbot application with a clean light theme, smooth animations, and advanced features.
 
-## Features
+## ✨ Features
 
-- 🤖 AI-powered responses using OpenAI GPT
-- 🎨 Beautiful green-themed UI with smooth animations
-- 💬 Real-time chat interface
-- 📱 Responsive design for mobile and desktop
-- ⚡ Fast and lightweight
-- 🔄 Typing indicators and loading states
+### Core Features
+- 🤖 **AI-Powered Responses** - OpenAI GPT integration
+- 💬 **Real-time Chat** - Instant message delivery
+- 📱 **Responsive Design** - Works on all devices
+- 🎨 **Professional UI** - Clean, modern interface
 
-## Setup Instructions
+### Advanced Features
+- 🌙 **Dark/Light Mode** - Toggle between themes
+- 📊 **Chat Statistics** - View conversation analytics
+- 📥 **Export Chat** - Download conversation history
+- 🗑️ **Clear Chat** - Reset conversation
+- ⚙️ **Settings Panel** - Customize experience
+- 🔌 **Offline Detection** - Network status awareness
+- 📝 **Multi-line Input** - Support for longer messages
+- ⌨️ **Keyboard Shortcuts** - Enter to send, Shift+Enter for new line
 
-### Backend (Python Flask)
+### UI Enhancements
+- ✨ **Smooth Animations** - Fluid transitions and micro-interactions
+- 🎯 **Professional Design** - Clean, structured layout
+- 🔤 **Font Size Options** - Adjustable text size
+- 📊 **Typing Indicators** - Real-time feedback
+- ✅ **Message Status** - Delivery confirmation
+- 🎨 **Light Color Scheme** - Easy on the eyes
 
-1. Install Python dependencies:
-\`\`\`bash
-pip install -r requirements.txt
-\`\`\`
+## 🚀 Setup Instructions
 
-2. Set up environment variables:
-\`\`\`bash
-cp .env.example .env
-# Edit .env and add your OpenAI API key
-\`\`\`
+### Backend Setup
+1. Install dependencies:
+   \`\`\`bash
+   pip install -r requirements.txt
+   \`\`\`
 
-3. Run the Flask server:
-\`\`\`bash
-python scripts/app.py
-\`\`\`
+2. Run the Flask server:
+   \`\`\`bash
+   python scripts/app.py
+   \`\`\`
 
-The backend will run on `http://localhost:5000`
+### Frontend Setup
+1. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-### Frontend (React/Next.js)
+2. Start development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
-1. Install Node.js dependencies:
-\`\`\`bash
-npm install
-\`\`\`
+## 🎯 Usage
 
-2. Run the development server:
-\`\`\`bash
-npm run dev
-\`\`\`
+1. Open http://localhost:3000
+2. Start chatting with the AI assistant
+3. Use the header buttons for additional features:
+   - 📊 View statistics
+   - 📥 Export chat
+   - 🗑️ Clear conversation
+   - ⚙️ Open settings
 
-The frontend will run on `http://localhost:3000`
+## 🛠️ API Endpoints
 
-## Usage
+- `POST /api/chat` - Send message to AI
+- `GET /api/conversation/<session_id>` - Get chat history
+- `DELETE /api/clear/<session_id>` - Clear conversation
+- `GET /api/export/<session_id>` - Export chat data
+- `GET /api/stats/<session_id>` - Get conversation statistics
+- `GET /api/health` - Health check
 
-1. Start both the Python backend and React frontend
-2. Open your browser to `http://localhost:3000`
-3. Start chatting with the AI assistant!
+## 🎨 Customization
 
-## Customization
+The application uses CSS custom properties for easy theming. Modify the variables in `globals.css` to customize colors, spacing, and animations.
 
-- Modify the green theme colors in `app/globals.css`
-- Adjust AI behavior in `scripts/app.py`
-- Add new animations or UI components as needed
+## 📱 Responsive Breakpoints
 
-## Technologies Used
+- Desktop: 1024px+
+- Tablet: 768px - 1023px
+- Mobile: 320px - 767px
 
-- **Backend**: Python, Flask, OpenAI API
-- **Frontend**: React, Next.js, JavaScript
-- **Styling**: CSS3 with animations and gradients
+## ♿ Accessibility
+
+- Keyboard navigation support
+- Screen reader friendly
+- High contrast mode support
+- Reduced motion support
+- Focus indicators
+
+## 🔧 Technologies
+
+- **Frontend**: React, Next.js, CSS3
+- **Backend**: Python, Flask
 - **AI**: OpenAI GPT-3.5-turbo
+- **Features**: Real-time updates, responsive design
