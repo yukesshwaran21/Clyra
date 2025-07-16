@@ -938,3 +938,7 @@ body {
     display: none;
   }
 }
+/* Custom scrollbar for better visibility */
+.messages-wrapper::-webkit-scrollbar {  
+  width: 8px;
+}
