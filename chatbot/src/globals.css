@@ -911,3 +911,30 @@ body {
     --text-secondary: #ffffff;
   }
 }
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .chat-app {
+    height: auto;
+    overflow: visible;
+  }
+
+  .messages-wrapper {
+    padding: 0.5rem;
+  }
+
+  .message-bubble {
+    page-break-inside: avoid;
+  }
+
+  .input-area,
+  .chat-header,
+  .settings-panel {
+    display: none;
+  }
+}
