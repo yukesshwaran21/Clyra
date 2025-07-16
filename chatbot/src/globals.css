@@ -945,7 +945,3 @@ body {
 .messages-wrapper::-webkit-scrollbar-track {
   background: var(--surface);
 }
-.messages-wrapper::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 4px;
-}
