@@ -942,6 +942,3 @@ body {
 .messages-wrapper::-webkit-scrollbar {  
   width: 8px;
 }
-.messages-wrapper::-webkit-scrollbar-track {
-  background: var(--surface);
-}
