@@ -225,185 +225,143 @@ body {
   transform: translateY(0);
 }
 
-/* Settings Panel - Enhanced */
-.settings-panel {
-  position: absolute;
-  top: 100%;
-  right: 1.5rem;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-xl);
-  z-index: 20;
-  min-width: 280px;
-  animation: slideDown 0.2s ease-out;
-  overflow: hidden;
+/* Settings Overlay */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes slideDown {
+/* Settings Panel */
+.settings-panel {
+  background: var(--panel-bg, #fff);
+  color: var(--panel-fg, #222);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  min-width: 320px;
+  max-width: 90vw;
+  position: relative;
+  animation: fadeInScale 0.2s;
+}
+
+@keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.95);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
-}
-
-.settings-content {
-  padding: 0;
 }
 
 .settings-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  margin-bottom: 1.2rem;
 }
 
 .settings-header h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-primary);
 }
 
 .close-settings {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: var(--text-muted);
+  color: #888;
   cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: color 0.2s;
+  padding: 0 0.25rem;
 }
 
 .close-settings:hover {
-  background: var(--border-light);
-  color: var(--text-primary);
+  color: #e74c3c;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .setting-item {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--border-light);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.setting-item:last-child {
-  border-bottom: none;
+  gap: 0.7rem;
+  font-size: 1rem;
 }
 
 .setting-label {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  gap: 0.5rem;
   cursor: pointer;
-  font-weight: 500;
-  flex: 1;
+  user-select: none;
 }
 
-/* Custom Checkbox */
 .setting-checkbox {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  background: var(--background);
-  border: 2px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.setting-checkbox:checked + .checkmark {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.setting-checkbox:checked + .checkmark:after {
-  display: block;
+  accent-color: #0078d4;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.4em;
 }
 
 .setting-select {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--background);
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 100px;
-}
-
-.setting-select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  background: #f7f7f7;
+  color: #222;
 }
 
 .clear-settings-btn {
-  background: #ef4444;
-  color: white;
+  background: #e74c3c;
+  color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  font-weight: 500;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
   cursor: pointer;
-  transition: all 0.2s ease;
-  width: 100%;
+  transition: background 0.18s;
 }
 
 .clear-settings-btn:hover {
-  background: #dc2626;
-  transform: translateY(-1px);
+  background: #c0392b;
 }
 
-.clear-settings-btn:active {
-  transform: translateY(0);
+/* Dark mode for settings panel */
+.dark-mode .settings-panel {
+  --panel-bg: #23272f;
+  --panel-fg: #f6f6f6;
+  background: var(--panel-bg, #23272f);
+  color: var(--panel-fg, #f6f6f6);
 }
 
-/* Settings button highlight when active */
-.settings-btn.active {
-  background: var(--primary-color);
-  color: white;
+.dark-mode .setting-select {
+  background: #23272f;
+  color: #f6f6f6;
+  border: 1px solid #444;
+}
+
+.dark-mode .clear-settings-btn {
+  background: #b93a2b;
+}
+
+.dark-mode .clear-settings-btn:hover {
+  background: #a12c1a;
 }
 
 /* Modal Styles */
@@ -872,6 +830,48 @@ body {
     right: 0.5rem;
     left: 0.5rem;
   }
+
+  .setting-item {
+    padding: 0.75rem 1rem;
+  }
+
+  .settings-header {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.action-btn:focus,
+.send-button:focus,
+.message-input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: #000000;
+    --text-secondary: #000000;
+  }
+
+  .dark-mode {
+    --border: #ffffff;
+    --text-secondary: #ffffff;
+  }
+
+    right: 0.5rem;
+    left: 0.5rem;
+  
 
   .setting-item {
     padding: 0.75rem 1rem;
