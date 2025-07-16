@@ -255,6 +255,6 @@ def health():
     })
 
 if __name__ == '__main__':
-    print("Starting Flask server...")
+    print("Started Flask server...")
     print(f"OpenAI API Key configured: {bool(openai.api_key)}")
     app.run(debug=True, port=5000, host='0.0.0.0')
