@@ -6,9 +6,23 @@ from datetime import datetime
 import json
 import uuid
 from dotenv import load_dotenv
+import sys
 
 # Load environment variables
 load_dotenv()
+
+# Check typing_extensions version
+try:
+    import typing_extensions
+    from packaging import version
+    if version.parse(getattr(typing_extensions, "__version__", "0.0.0")) < version.parse("4.0.0"):
+        print("ERROR: Your typing_extensions package is too old for the current OpenAI library.")
+        print("Please run: pip install --upgrade typing_extensions")
+        sys.exit(1)
+except ImportError:
+    print("ERROR: typing_extensions or packaging is not installed.")
+    print("Please run: pip install typing_extensions packaging")
+    sys.exit(1)
 
 app = Flask(__name__)
 # Update CORS configuration to allow requests from frontend
