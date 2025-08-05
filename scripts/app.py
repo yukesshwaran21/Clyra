@@ -1,17 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import openai
-import os
-from datetime import datetime
-import json
-import uuid
-from dotenv import load_dotenv
 import sys
 
-# Load environment variables
-load_dotenv()
-
-# Check typing_extensions version
+# Check typing_extensions version BEFORE importing openai
 try:
     import typing_extensions
     from packaging import version
@@ -24,9 +15,15 @@ except ImportError:
     print("Please run: pip install typing_extensions packaging")
     sys.exit(1)
 
-app = Flask(__name__)
-# Update CORS configuration to allow requests from frontend
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
+import openai
+import os
+from datetime import datetime
+import json
+import uuid
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Configure OpenAI with your API key from environment
 openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -44,6 +41,10 @@ try:
     from openai import AuthenticationError, RateLimitError, APIError
 except ImportError:
     AuthenticationError = RateLimitError = APIError = Exception
+
+app = Flask(__name__)
+# Update CORS configuration to allow requests from frontend
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
