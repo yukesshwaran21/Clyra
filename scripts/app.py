@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sys
 
-# Check typing_extensions version BEFORE importing openai
 try:
     import typing_extensions
     from packaging import version
