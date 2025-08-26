@@ -22,7 +22,6 @@ import json
 import uuid
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 # Configure OpenAI with your API key from environment
