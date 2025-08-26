@@ -372,3 +372,5 @@ export default function ChatBot() {
     </div>
   )
 }
+
+export { ChatBot }
