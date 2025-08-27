@@ -66,7 +66,6 @@ def chat():
         }
         conversations[session_id].append(user_message)
         
-        # Prepare messages for OpenAI
         openai_messages = [
             {"role": "system", "content": "You are a helpful, professional, and friendly AI assistant. Provide clear, concise, and engaging responses. Use emojis occasionally to make conversations more pleasant."}
         ]
