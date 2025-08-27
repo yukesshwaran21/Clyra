@@ -58,7 +58,6 @@ def chat():
         if session_id not in conversations:
             conversations[session_id] = []
         
-        # Add user message to history
         user_message = {
             "role": "user",
             "content": message,
