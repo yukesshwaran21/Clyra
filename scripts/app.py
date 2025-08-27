@@ -38,7 +38,6 @@ except ImportError:
     AuthenticationError = RateLimitError = APIError = Exception
 
 app = Flask(__name__)
-# Update CORS configuration to allow requests from frontend
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 
 @app.route('/api/chat', methods=['POST'])
