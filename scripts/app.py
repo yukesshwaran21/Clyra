@@ -70,7 +70,6 @@ def chat():
             {"role": "system", "content": "You are a helpful, professional, and friendly AI assistant. Provide clear, concise, and engaging responses. Use emojis occasionally to make conversations more pleasant."}
         ]
         
-        # Add conversation history (last 10 messages for context)
         for msg in conversations[session_id][-10:]:
             openai_messages.append({
                 "role": msg["role"],
