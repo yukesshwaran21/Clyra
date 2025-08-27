@@ -32,7 +32,6 @@ if not openai.api_key:
 conversations = {}
 user_preferences = {}
 
-# Import OpenAI error classes for proper exception handling
 try:
     from openai import AuthenticationError, RateLimitError, APIError
 except ImportError:
