@@ -43,7 +43,6 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_
 @app.route('/api/chat', methods=['POST'])
 def chat():
     try:
-        # Check if OpenAI API key is configured
         if not openai.api_key:
             return jsonify({
                 "error": "OpenAI API key is not configured. Please check your environment variables.",
