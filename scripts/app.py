@@ -55,7 +55,6 @@ def chat():
         
         print(f"Received message: {message}")  # Debug logging
         
-        # Initialize conversation history for new sessions
         if session_id not in conversations:
             conversations[session_id] = []
         
