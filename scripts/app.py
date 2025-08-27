@@ -29,7 +29,6 @@ if not openai.api_key:
     print("WARNING: OPENAI_API_KEY not found in environment variables!")
     print("Please make sure your .env file contains: OPENAI_API_KEY=your-key-here")
 
-# Store conversation history and user preferences
 conversations = {}
 user_preferences = {}
 
