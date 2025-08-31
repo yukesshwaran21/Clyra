@@ -827,8 +827,6 @@ body {
   }
 
   .settings-panel {
-    right: 0.5rem;
-    left: 0.5rem;
   }
 
   .setting-item {
@@ -911,5 +909,4 @@ body {
     --text-secondary: #ffffff;
   }
 }
-
 
