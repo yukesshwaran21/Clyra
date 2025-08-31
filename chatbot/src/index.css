@@ -1,24 +1,3 @@
-:root {
-  --primary-color: #2563eb;
-  --primary-light: #3b82f6;
-  --secondary-color: #64748b;
-  --background-color: #f8fafc;
-  --text-color: #1e293b;
-  --text-light: #64748b;
-  --white: #ffffff;
-  --border-radius: 8px;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --max-width: 1200px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,88 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
-
-.chat-container {
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: var(--spacing-lg);
-  margin: var(--spacing-md) 0;
-}
-
-.message {
-  padding: var(--spacing-md);
-  margin: var(--spacing-sm) 0;
-  border-radius: var(--border-radius);
-  max-width: 80%;
-}
-
-.message.user {
-  background-color: var(--primary-color);
-  color: var(--white);
-  margin-left: auto;
-}
-
-.message.bot {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  margin-right: auto;
-}
-
-.input-container {
-  display: flex;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: var(--spacing-md);
-  border: 1px solid var(--secondary-color);
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-  border-color: var(--primary-color);
-}
-
-button {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: var(--primary-light);
-}
-
-button:disabled {
-  background-color: var(--secondary-color);
-  cursor: not-allowed;
 }
