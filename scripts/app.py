@@ -78,7 +78,6 @@ def chat():
         
         print(f"Sending to OpenAI: {len(openai_messages)} messages")  # Debug logging
         
-        # Get response from OpenAI using the newer client format
         try:
             # Try the newer OpenAI client format first
             from openai import OpenAI
